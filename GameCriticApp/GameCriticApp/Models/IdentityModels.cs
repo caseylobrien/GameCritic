@@ -29,5 +29,7 @@ namespace GameCriticApp.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<GameCriticApp.Models.GameModels> GameModels { get; set; }
     }
 }

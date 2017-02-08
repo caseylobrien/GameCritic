@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GameCriticApp.Models.GameModels>
+
+@{
+    ViewBag.Title = "Game Reviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<a>
+    @Html.ActionLink("New Game Review", "Create")
+</a>
+
+@foreach (var item in Model)
+{
+
+    <div>
+        @Html.LabelFor(modelItem => item.Name)
+        @Html.ValueFor(modelItem => item.Name)
+    </div>
+    <div>
+        @Html.LabelFor(modelItem => item.Rating)
+        @Html.ValueFor(modelItem => item.Rating)
+    </div>
+    <div>
+        @Html.LabelFor(modelItem => item.Description)
+        @Html.ValueFor(modelItem => item.Description)
+    </div>
+    <div>
+        @Html.ActionLink("Details", "Details", new { Id = item.Id})
+    </div>
+}
+

@@ -1,0 +1,24 @@
+﻿@model GameCriticApp.Models.GameModels
+
+<h2>Create New Game Review</h2>
+
+@using (Html.BeginForm("Create", "Game"))
+{
+    <div>
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Rating)
+        @Html.TextBoxFor(model => model.Rating)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description)
+    </div>
+    <input type="submit" value="Submit" id="btnSubmit" />
+}
+
+
+
+
