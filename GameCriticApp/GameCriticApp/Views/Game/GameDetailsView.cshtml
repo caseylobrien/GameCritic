@@ -1,4 +1,4 @@
-﻿@model GameCriticApp.Models.GameModels
+﻿@model GameCriticApp.Models.Game
 
 <div>
     <h4>GameModels</h4>
@@ -13,14 +13,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
@@ -30,6 +22,17 @@
 
     </dl>
 </div>
+
+@foreach(var review in Model.Reviews)
+{
+    <div>
+        @Html.DisplayFor(item => review.Rating)
+    </div>
+    <div>
+        @Html.DisplayFor(item => review.Body)
+    </div>
+}
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

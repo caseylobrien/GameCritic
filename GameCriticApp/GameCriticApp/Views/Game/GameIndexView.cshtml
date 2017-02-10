@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GameCriticApp.Models.GameModels>
+﻿@model IEnumerable<GameCriticApp.Models.Game>
 
 @{
     ViewBag.Title = "Game Reviews";
@@ -17,10 +17,6 @@
     <div>
         @Html.LabelFor(modelItem => item.Name)
         @Html.ValueFor(modelItem => item.Name)
-    </div>
-    <div>
-        @Html.LabelFor(modelItem => item.Rating)
-        @Html.ValueFor(modelItem => item.Rating)
     </div>
     <div>
         @Html.LabelFor(modelItem => item.Description)

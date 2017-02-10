@@ -1,5 +1,4 @@
-﻿using GameCriticApp.Data;
-using GameCriticApp.Models;
+﻿using GameCriticApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +9,17 @@ namespace GameCriticApp.Controllers
 {
     public class GameController : Controller
     {
+        private GameCriticDb _db = new GameCriticDb();
+
         public ActionResult Index()
         {
-            return View("GameIndexView", GameRepo.Games);
+            var models = _db.Games.ToList().OrderBy(g => g.Name);
+            return View("GameIndexView", models);
         }
 
         public ActionResult Details(int Id)
         {
-            var game = GameRepo.Games.First(g => g.Id == Id);
+            var game = _db.Games.Find(Id);
             return View("GameDetailsView", game);
         }
 
@@ -28,21 +30,30 @@ namespace GameCriticApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(GameModels game)
+        public ActionResult Create(Game game)
         {
             if(ModelState.IsValid)
             {
-                var newGame = new GameModels();
-                newGame.Id = GameRepo.Games.Max(g => g.Id) +1;
+                var newGame = new Game();
+                newGame.Id = _db.Games.Max(g => g.Id) +1;
                 newGame.Name = game.Name;
-                newGame.Rating = game.Rating;
                 newGame.Description = game.Description;
 
-                GameRepo.AddGame(newGame);
+                _db.Games.Add(newGame);
+                _db.SaveChanges();
                 return RedirectToAction("Details", new { Id = newGame.Id });
             }
             
             return View(game);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(_db != null)
+            {
+                _db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 
