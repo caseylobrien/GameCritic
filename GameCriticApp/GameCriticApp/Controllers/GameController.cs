@@ -1,6 +1,7 @@
 ﻿using GameCriticApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -44,6 +45,18 @@ namespace GameCriticApp.Controllers
                 return RedirectToAction("Details", new { Id = newGame.Id });
             }
             
+            return View(game);
+        }
+
+        public ActionResult Edit(Game game)
+        {
+            if(ModelState.IsValid)
+            {
+                _db.Entry(game).State = EntityState.Modified;
+                _db.SaveChanges();
+
+                return RedirectToAction("Details");
+            }
             return View(game);
         }
 

@@ -18,26 +18,28 @@ namespace GameCriticApp.Migrations
         protected override void Seed(GameCriticApp.Models.GameCriticDb context)
         {
             context.Genres.AddOrUpdate(g => g.Name,
-                    new Genre { Name = "Shooter"},
-                    new Genre { Name = "Strategy"},
-                    new Genre { Name = "Role PLaying Game"},
-                    new Genre { Name = "Massive Multiplayer Online"}
+                    new Genre { Id = 1, Name = "Shooter" },
+                    new Genre { Id = 2,Name = "Strategy" },
+                    new Genre { Id = 3, Name = "Role PLaying Game"},
+                    new Genre { Id = 4, Name = "Massive Multiplayer Online"}
                 );
 
             context.Games.AddOrUpdate(g => g.Name,
                     new Game
                     {
+                        Id = 1,
                         Name = "Overwatch",
                         Company = "Blizzard",
                         Description = "6v6 team shooter",
-                        Genre = context.Genres.Find(1)
+                        GenreId = 1
                     },
                     new Game
                     {
+                        Id = 2,
                         Name = "Civilization VI",
                         Company = "2K",
                         Description = "Build an empire to stand the test of Time",
-                        Genre = context.Genres.Find(2),
+                        GenreId = 2,
                         Reviews = new List<GameReview> { new GameReview {
                             Rating = 10, Body = "Best initial release of the series" }
                         }

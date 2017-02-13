@@ -1,8 +1,6 @@
 ﻿@model GameCriticApp.Models.Game
 
-<h2>New Game</h2>
-
-@using (Html.BeginForm("Create", "Game"))
+@using (Html.BeginForm())
 {
     <div>
         @Html.EditorFor(model => Model.Name)
@@ -16,9 +14,6 @@
     <div>
         @Html.EditorFor(model => Model.Company)
     </div>
-    <input type="submit" value="Submit" id="btnSubmit" />
+
+    <input type="submit" value="Submit" id="btnSubmit"/>
 }
-
-
-
-

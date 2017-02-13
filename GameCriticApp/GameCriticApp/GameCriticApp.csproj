@@ -199,6 +199,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Shared\SharedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +213,7 @@
     <Compile Include="Models\GameCriticDb.cs" />
     <Compile Include="Models\GameReview.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -278,6 +280,8 @@
     <Content Include="Views\Game\GameIndexView.cshtml" />
     <Content Include="Views\Game\GameDetailsView.cshtml" />
     <Content Include="Views\Game\GameCreateView.cshtml" />
+    <Content Include="Views\Game\GameEditView.cshtml" />
+    <Content Include="Views\Shared\_Genre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
